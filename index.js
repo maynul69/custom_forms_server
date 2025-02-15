@@ -15,16 +15,18 @@ app.use(cors());
 const port=process.env.PORT||5000;
 
 //database connection
-const MONGO_URI = `mongodb+srv://${user}:${password}@crud.dstdd.mongodb.net/`;
+// const MONGO_URI = `mongodb+srv://${user}:${password}@crud.dstdd.mongodb.net/`;
 
-mongoose.connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }).then(() => {
+const MONGO_URI = 'mongodb+srv://maynulhossain69:1234@crud.dstdd.mongodb.net/forms?retryWrites=true&w=majority&appName=crud'
+
+mongoose.connect(MONGO_URI)
+  .then(() => {
     console.log("Database connected successfully!");
-  }).catch((error) => {
-    console.error("Database connection failed:", error); 
+  })
+  .catch((error) => {
+    console.error("Database connection failed:", error);
   });
+
   
 
   //routes
