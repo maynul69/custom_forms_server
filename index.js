@@ -6,7 +6,10 @@ const mongoose = require("mongoose");
 const password= process.env.PASSWORD;
 const user= process.env.USER;
 const userRoutes= require("./routes/users")
-const authRoutes= require("./routes/auth")
+const authRoutes= require("./routes/auth");
+const questionRoutes = require('./routes/question')
+const answer = require("./routes/answer");
+
 
 //middleware
 app.use(express.json())
@@ -32,5 +35,8 @@ mongoose.connect(MONGO_URI)
   //routes
   app.use("/api/users", userRoutes);
   app.use("/api/auth", authRoutes);
+  app.use("/api", questionRoutes);
+  app.use("/api", answer);
+
 
 app.listen(port,()=>console.log(`server started on port: ${port}`));
