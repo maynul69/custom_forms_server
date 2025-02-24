@@ -37,4 +37,21 @@ router.post("/", async (req, res) => {
     }
 });
 
+router.post('/update-user', async(req,res)=>{
+    try{
+        const {email} = req.body;
+        const user = await User.findOne({email:email});
+        user.role = 'admin';
+        await user.save();
+        return res.status(200).json({
+            message: "Role Update successfully!"
+        })
+
+    }catch(err){
+        return res.status(500).json({
+            message: err.message
+        })
+    }
+})
+
 module.exports = router;
